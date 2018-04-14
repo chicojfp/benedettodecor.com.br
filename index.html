@@ -1,294 +1,235 @@
-
 <!DOCTYPE html>
 <!-- saved from url=(0060)https://www.w3schools.com/howto/tryhow_css_parallax_demo.htm -->
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta charset="UTF-8">
 
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+    <title>Benedetto Arte & Cimento</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin="anonymous">
+    <!-- production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
 
     <style>
-    body, html {
-    height: 100%;
-    margin: 0;
-    font: 400 15px/1.8 "Lato", sans-serif;
-    color: #777;
-    }
-
-    .bgimg-1, .bgimg-2, .bgimg-3 {
-    position: relative;
-    opacity: 0.65;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    }
-    .bgimg-1 {
-        background-image: url("imgs/009.jpeg");
-        min-height: 100%;
-    }
-
-    .bgimg-2 {
-    background-image: url("imgs/005.jpeg");
-    min-height: 400px;
-    }
-
-    .bgimg-3 {
-    background-image: url("imgs/008.jpeg");
-    min-height: 400px;
-    }
-
-    .inferior {
-        position: absolute;
-        right: 0px;
-        top: 80%;
-        background-color: #111;
-        color: #fff;
-    }
-    .contato {
-        background-color: #aea08a;
-        color: #fff;
-        text-decoration: none;
-    }
-
-    .principal {
-        text-align: right;
-    }
-
-    .caption {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    text-align: center;
-    color: #000;
-    }
-
-    a {
-        text-decoration: none;
-        font-weight: 800;
-        font-size: 18px;
-        color: #111;
-    }
-
-    .caption span.border {
-    background-color: #111;
-    color: #fff;
-    padding: 18px;
-    font-size: 25px; 
-    /* letter-spacing: 5px; */
-    }
-
-    h3 {
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    font: 20px "Lato", sans-serif;
-    color: #111;
-    }
-
-    /* Turn off parallax scrolling for tablets and phones */
-    @media only screen and (max-device-width: 1024px) {
-        .bgimg-1, .bgimg-2, .bgimg-3 {
-            background-attachment: scroll;
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font: 400 15px/1.8 "Lato", sans-serif;
+            color: #777;
         }
-    }
 
+        .bgimg-1,
+        .bgimg-2,
+        .bgimg-3 {
+            position: relative;
+            opacity: 0.65;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
 
+        }
 
+        .bgimg-1 {
+            background-image: url("imgs/009.jpeg");
+            min-height: 100%;
+        }
 
+        .bgimg-2 {
+            background-image: url("imgs/005.jpeg");
+            min-height: 400px;
+        }
 
+        .bgimg-3 {
+            background-image: url("imgs/008.jpeg");
+            min-height: 400px;
+        }
+
+        .inferior {
+            position: absolute;
+            right: 0px;
+            top: 80%;
+            background-color: #111;
+            color: #fff;
+        }
+
+        .contato {
+            background-color: #aea08a;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .principal {
+            text-align: right;
+        }
+
+        .caption {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #000;
+        }
+
+        a {
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 18px;
+            color: #111;
+        }
+
+        .caption span.border {
+            background-color: #111;
+            color: #fff;
+            padding: 18px;
+            font-size: 25px;
+            /* letter-spacing: 5px; */
+        }
+
+        h3 {
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font: 20px "Lato", sans-serif;
+            color: #111;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-shrink: 1;
+            flex-grow: 0.1;
+        }
+
+        /* Turn off parallax scrolling for tablets and phones */
+
+        @media only screen and (max-device-width: 1024px) {
+            .bgimg-1,
+            .bgimg-2,
+            .bgimg-3 {
+                background-attachment: fixed;
+            }
+        }
     </style>
-    <style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
-    body /shadow-deep/ [touch-action="none"]{ -ms-touch-action: none; touch-action: none; touch-action-delay: none; }
-    [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
-    body /shadow-deep/ [touch-action="auto"]{ -ms-touch-action: auto; touch-action: auto; touch-action-delay: none; }
-    [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
-    body /shadow-deep/ [touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; touch-action-delay: none; }
-    [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
-    body /shadow-deep/ [touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; touch-action-delay: none; }
-    [touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
-    body /shadow-deep/ [touch-action="pan-x pan-y"],body /shadow-deep/ [touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; touch-action-delay: none; }
-    </style>
-    
+
+
     <style id="style-1-cropbar-clipper">
-    
-    /* Copyright 2014 Evernote Corporation. All rights reserved. */
-    .en-markup-crop-options {
-        top: 18px !important;
-        left: 50% !important;
-        margin-left: -100px !important;
-        width: 200px !important;
-        border: 2px rgba(255,255,255,.38) solid !important;
-        border-radius: 4px !important;
-    }
+        /* Copyright 2014 Evernote Corporation. All rights reserved. */
 
-    .en-markup-crop-options div div:first-of-type {
-        margin-left: 0px !important;
-    }
+        .card-benedetto {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+            transition: 0.3s;
+            padding: 10px;
+            margin-top: 128px;
+            margin: 30px;
+            background-color: white;
+            opacity: 0.8;
+        }
 
+        .card-benedetto:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+            opacity: 1;
+        }
 
-    .card-benedetto {
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
-        transition: 0.3s;
-        width: 40%;
-        padding: 10px;
-        margin-top: 128px;
-        margin: 30px;
-    }
-
-    .card-benedetto:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.6);
-    }
-
-    .container {
-        padding: 2px 16px;
-    }
-
-
+        .container {
+            padding: 2px 16px;
+        }
     </style>
 
     <body>
 
-<div class="bgimg-1">
-  
-</div>
+        <div class="bgimg-1">
 
-<div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
-  <h3 style="text-align:center;">Benedetto Arte & Cimento</h3>
-    <p><a href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a></p>
-    <p><a href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a></p>
-</div>
+        </div>
 
-<div class="bgimg-2">
-  <div class="caption">
-    <span class="border" style="font-size:25px;color: #f7f7f7;background-color:#555">
-      Benedetto Arte & Cimento
-    </span>
-  </div>
-</div>
+        <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+            <h3 style="text-align:center;">Benedetto Arte & Cimento</h3>
+            <p>
+                <a href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a>
+            </p>
+            <p>
+                <a href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a>
+            </p>
+        </div>
 
-<div style="position:relative;">
-  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-    
-    <p><a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a></p>
-    <p><a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a></p>
-  </div>
-</div>
+        <div class="bgimg-2">
+            <div class="caption">
+                <span class="border" style="font-size:25px;color: #f7f7f7;background-color:#555">
+                    Benedetto Arte & Cimento
+                </span>
+            </div>
+        </div>
 
-<div class="bgimg-3">
-  <div class="caption">
-    <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">
-        <h3 style="text-align:center;background-color:#BBB">Benedetto Arte & Cimento</h3>
-    </span>
-  </div>
-</div>
+        <div style="position:relative;">
+            <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
 
-<div style="position:relative;">
-  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-        <p><a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a></p>
-        <p><a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a></p>
-  </div>
-</div>
+                <p>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a>
+                </p>
+                <p>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a>
+                </p>
+            </div>
+        </div>
 
-<div class="bgimg-1">
-  <!-- div class="caption">
+        <div class="bgimg-3">
+            <div class="caption">
+                <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;">
+                    <h3 style="text-align:center;background-color:#BBB">Benedetto Arte & Cimento</h3>
+                </span>
+            </div>
+        </div>
+
+        <div style="position:relative;">
+            <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+                <p>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a>
+                </p>
+                <p>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="bgimg-1" style="opacity: 1;">
+            <!-- div class="caption">
     <span class="border">
         Consulte-nos!
     </span>
   </div -->
-  <div class="column">
+            <div class="column" id="imagens">
 
-        <span class="card-benedetto">
-                <a target="_blank" href="imgs/001.jpeg"><img src="imgs/001.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/002.jpeg"><img src="imgs/002.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/003.jpeg"><img src="imgs/003.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/004.jpeg"><img src="imgs/004.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/005.jpeg"><img src="imgs/005.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/006.jpeg"><img src="imgs/006.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/007.jpeg"><img src="imgs/007.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/008.jpeg"><img src="imgs/008.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/008.jpeg"><img src="imgs/008.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/010.jpeg"><img src="imgs/010.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/011.jpeg"><img src="imgs/011.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/012.jpeg"><img src="imgs/012.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/013.jpeg"><img src="imgs/013.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/014.jpeg"><img src="imgs/014.jpeg" style="transform: rotate(90deg);width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/015.jpeg"><img src="imgs/015.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/016.jpeg"><img src="imgs/016.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/017.jpeg"><img src="imgs/017.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/018.jpeg"><img src="imgs/018.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/019.jpeg"><img src="imgs/019.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/020.jpeg"><img src="imgs/020.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/021.jpeg"><img src="imgs/021.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/022.jpeg"><img src="imgs/022.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/023.jpeg"><img src="imgs/023.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/024.jpeg"><img src="imgs/024.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/025.jpeg"><img src="imgs/025.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/026.jpeg"><img src="imgs/026.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/027.jpeg"><img src="imgs/027.jpeg" style="width:128px; height: 128px;"></a>
-            </span>
-            <span class="card-benedetto">
-                <a target="_blank" href="imgs/028.jpeg"><img src="imgs/028.jpeg" style="width:128px; height: 128px;" /></a>
-            </span>
+                <span class="card-benedetto" v-for="n in 28">
+                    <a target="_blank" :href="formatarNomeArquivo(n)">
+                        <img :src="formatarNomeArquivo(n)" style="width:128px; height: 128px;" />
+                    </a>
+                </span>
+            
+            </div>
 
-  </div>
-
-</div>
+        </div>
 
 
-</body></html>
+    </body>
+
+    <script>
+        new Vue({
+            el: '#imagens',
+            data: {
+
+            },
+            methods: {
+                formatarNomeArquivo: function (number) {
+                    let nome = ("00" + number);
+                    return "imgs/" + nome.substring(nome.length - 3, nome.length) + ".jpeg";
+                }
+            }
+        })
+    </script>
+
+</html>
