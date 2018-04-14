@@ -107,13 +107,18 @@
             justify-content: space-around;
         }
 
-        /* Turn off parallax scrolling for tablets and phones *
+        /* Turn off parallax scrolling for tablets and phones */
 
-        @media only screen and (max-device-width: 1024px) {
+        @media only screen and (max-device-width: 800px) {
             .bgimg-1,
             .bgimg-2,
             .bgimg-3 {
+                -moz-background-size: auto;
+                -webkit-background-size: auto;
                 background-attachment: fixed;
+                background-position: top;
+                background-size: auto;
+                height: auto !important;
             }
         } */
     </style>
@@ -127,7 +132,7 @@
             transition: 0.3s;
             padding: 10px;
             margin-top: 128px;
-            margin: 30px;
+            margin: 20px;
             background-color: white;
             opacity: 0.8;
         }
