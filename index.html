@@ -13,6 +13,14 @@
     <!-- production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.min.js"></script>
 
+      <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/css/mdb.min.css" rel="stylesheet">
+
+
     <style>
         body,
         html {
@@ -145,6 +153,13 @@
         .container {
             padding: 2px 16px;
         }
+
+        .center-cropped {
+            object-fit: scale-down; /* Do not scale the image */
+            object-position: center; /* Center the image within the element */
+            height: 300px;
+            /* width: 100px; */
+        }
     </style>
 
     <body>
@@ -156,10 +171,10 @@
         <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
             <h3 style="text-align:center;">Benedetto Arte & Cimento</h3>
             <p>
-                <a href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a>
+                <a href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233 <i class="fa fa-whatsapp ml-2"></i></a>
             </p>
             <p>
-                <a href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a>
+                <a href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525 <i class="fa fa-whatsapp ml-2"></i></a>
             </p>
         </div>
 
@@ -175,10 +190,10 @@
             <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
 
                 <p>
-                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233 <i class="fa fa-whatsapp ml-2"></i></a>
                 </p>
                 <p>
-                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525 <i class="fa fa-whatsapp ml-2"></i></a>
                 </p>
             </div>
         </div>
@@ -194,21 +209,21 @@
         <div style="position:relative;">
             <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
                 <p>
-                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233</a>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61986412233">+55 61 986412233 <i class="fa fa-whatsapp ml-2"></i></a>
                 </p>
                 <p>
-                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525</a>
+                    <a style="color:white" href="https://api.whatsapp.com/send?phone=55DD61982009525">+55 61 982009525 <i class="fa fa-whatsapp ml-2"></i></a>
                 </p>
             </div>
         </div>
 
-        <div class="bgimg-1" style="opacity: 1;">
+        <div class="bgimg-2" style="opacity: 1;">
             <!-- div class="caption">
     <span class="border">
         Consulte-nos!
     </span>
   </div -->
-            <div class="column" id="imagens">
+            <!-- div class="column" id="imagens">
 
                 <span class="card-benedetto" v-for="n in 28">
                     <a target="_blank" :href="formatarNomeArquivo(n)">
@@ -216,26 +231,117 @@
                     </a>
                 </span>
             
-            </div>
+            </div -->
+
+            <section id="products" class="text-center mb-4">
+
+                <!--Grid row-->
+                <div class="row wow fadeIn">
+        
+                  <!--Grid column-->
+                  <div class="col-lg-3 col-md-6 mb-4 wow fadeIn" v-for="n in 28">
+        
+                    <!--Card-->
+                    <div class="card">
+        
+                      <!--Card image-->
+                      <div class="view overlay">
+                        <!-- <img :src="formatarNomeArquivo(n)" class="card-img-top" alt=""> -->
+                        <a rel=popover>
+                            <img id="produto" :src="formatarNomeArquivo(n)" class="card-img-top center-cropped" alt="Imagem do produto">
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                      </div>
+                      <!--Card image-->
+        
+                      <!--Card content-->
+                      <div class="card-body text-center">
+                        <!--Category & Title-->
+                        <a href="" class="grey-text">
+                          <h5>Benedetto Decor</h5>
+                        </a>
+        
+                      </div>
+                      <!--Card content-->
+        
+                    </div>
+                    <!--Card-->
+        
+                  </div>
+                  <!--Grid column-->
+        
+                </div>
+                <!--Grid row-->
+        
+              </section>
+              <!--Section: Products v.3-->
 
         </div>
+
+        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">              
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <img id="imagepreview" src="" class="imagepreview" style="width: 100%;" >
+                </div>
+              </div>
+            </div>
+          </div>
 
 
     </body>
 
-    <script>
-        new Vue({
-            el: '#imagens',
-            data: {
+      <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.4/js/mdb.min.js"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
 
-            },
-            methods: {
-                formatarNomeArquivo: function (number) {
-                    let nome = ("00" + number);
-                    return "imgs/" + nome.substring(nome.length - 3, nome.length) + ".jpeg";
-                }
-            }
-        })
+  <script>
+      new Vue({
+          el: '#products',
+          data: {
+
+          },
+          methods: {
+              formatarNomeArquivo: function (number) {
+                  let nome = ("00" + number);
+                  return "imgs/" + nome.substring(nome.length - 3, nome.length) + ".jpeg";
+              }
+          }
+      })
+  </script>
+
+    <script>
+        // new Vue({
+        //     el: '#imagens',
+        //     data: {
+
+        //     },
+        //     methods: {
+        //         formatarNomeArquivo: function (number) {
+        //             let nome = ("00" + number);
+        //             return "imgs/" + nome.substring(nome.length - 3, nome.length) + ".jpeg";
+        //         }
+        //     }
+        // })
+
+        $('a[rel=popover]').on("click", function() {
+            let url = $($(this).children('img')[0]).attr('src');
+            console.log(url);
+            $('#imagepreview').attr('src', url); // here asign the image to the modal when the user click the enlarge link
+            $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+        });
     </script>
 
 </html>
