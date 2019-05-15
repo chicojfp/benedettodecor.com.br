@@ -189,6 +189,48 @@
             height: 300px;
             /* width: 100px; */
         }
+
+        .info-principal {
+            color: #777;
+            background-color:white;
+            text-align:center;
+            padding:10px 80px;
+            text-align: justify;
+            /* height: 352px; */
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .info-contato-local {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+
+        iframe {
+            width: 400px;
+            height: 300px;
+        }
+
+        @media (max-width: 600px) {
+            .info-principal {
+                padding: 0px;
+            }
+
+            iframe {
+                width: 100vw;
+                height: 40vh;
+            }
+
+            .padding-pequeno {
+                padding: 5vw;
+            }
+        }
+
+        
     </style>
 
     <body>
@@ -197,22 +239,23 @@
 
         </div>
 
-        <div style="color: #777;background-color:white;text-align:center;padding:10px 80px;text-align: justify;height: 352px">
-                <p style="float: right">
-                    Estamos no ParkShopping.
-                    Venha nos conhecer.<br>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.439025262172!2d-47.95750468456516!3d-15.833506589026975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3029eaad68b7%3A0xc4985755bc8593cc!2sParkShopping!5e0!3m2!1sde!2sbr!4v1557883956152!5m2!1sde!2sbr" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </p>
+        <div class="info-principal">
             <h3 style="text-align:center;">Benedetto Arte & Cimento</h3>
-            <p style="float: left">
-                    <br><br><br>
-                Contato:<br>
-                <a class="mouse"
+            <div class="info-contato-local">
+                <p class="padding-pequeno">
+                    Contato:<br>
+                    <a class="mouse"
                     href="https://api.whatsapp.com/send?phone=55DD6198456222&text=Olá,%20gostaria%20de%20mais%20informação%20sobre%20seus%20produtos.">
                     <i class="fa fa-whatsapp fa-3x"></i>
                     <i style="font-size: x-large">+55 61 984562222</i>
-                </a>
-            </p>
+                    </a>
+                </p>
+                <p>
+                    Estamos no ParkShopping.
+                    Venha nos conhecer.<br>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.439025262172!2d-47.95750468456516!3d-15.833506589026975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3029eaad68b7%3A0xc4985755bc8593cc!2sParkShopping!5e0!3m2!1sde!2sbr!4v1557883956152!5m2!1sde!2sbr" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </p>
+            </div>
             
         </div>
 
